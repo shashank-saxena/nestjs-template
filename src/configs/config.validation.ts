@@ -44,7 +44,7 @@ export function validateConfig(config: Record<string, unknown>) {
     enableImplicitConversion: true,
   });
 
-  console.log(validatedConfig);
+  // console.log(validatedConfig);
   const errors = validateSync(validatedConfig, {
     skipMissingProperties: false,
   });

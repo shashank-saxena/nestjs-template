@@ -42,7 +42,7 @@ export const mysqlConfig = (appConfigService: AppConfigService) => {
     // highlighter: new SqlHighlighter(),
     metadataProvider: TsMorphMetadataProvider, //https://github.com/mikro-orm/mikro-orm/issues/235
     // @ts-expect-error nestjs adapter option
-    registerRequestContext: false,
+    registerRequestContext: true,
     // extensions: [Migrator, EntityGenerator, SeedManager], https://mikro-orm.io/docs/seeding#use-in-tests
     seeder: {
       path: './src/db/seeders/mysql', // path to the folder with seeders
@@ -60,4 +60,4 @@ export const mysqlConfig = (appConfigService: AppConfigService) => {
       ignoreSchema: [], // allows ignoring some schemas when diffing
     },
   });
-}
+};

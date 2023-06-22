@@ -10,6 +10,6 @@
 ------------------------------------------------------------------------------*/
 
 import { EntityRepository } from '@mikro-orm/mysql';
-import { UserEntity } from './user.entity';
+import { User } from './user.entity';
 
-export class UserRepository extends EntityRepository<UserEntity> {}
+export class UserRepository extends EntityRepository<User> {}

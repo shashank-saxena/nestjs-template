@@ -82,10 +82,6 @@
     "testEnvironment": "node"
   },
   "mikro-orm": {
-    "useTsNode": true,
-    "configPaths": [
-      "./src/db/mysql/mikro-orm.config.ts",
-      "./dist/db/mysql/mikro-orm.config.js"
-    ]
+    "useTsNode": true
   }
 }

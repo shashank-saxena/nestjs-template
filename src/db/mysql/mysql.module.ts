@@ -14,19 +14,22 @@ import { MikroOrmModule } from '@mikro-orm/nestjs';
 
 // Info: entities
 // TODO: Can be named exported from single index file
-// import { ActionEntity } from './auth/models/action.entity';
-// import { PermissionEntity } from './auth/models/permission.entity';
-// import { RoleEntity } from './auth/models/role.entity';
-// import { RolesPermsMapEntity } from './auth/models/roles-perms-map.entity';
-// import { UserRoleMapEntity } from './auth/models/user-role-map.entity';
-// import { UserEntity } from './user/models/user.entity';
-// import { UserContactEntity } from './user/models/user-contact.entity';
-// import { CityEntity } from './common/models/city.entity';
-// import { StateEntity } from './common/models/state.entity';
-// import { CountryEntity } from './common/models/country.entity';
+import { ActionEntity } from './auth/models/action.entity';
+import { PermissionEntity } from './auth/models/permission.entity';
+import { RoleEntity } from './auth/models/role.entity';
+import { RolesPermsMapEntity } from './auth/models/roles-perms-map.entity';
+import { UserRoleMapEntity } from './auth/models/user-role-map.entity';
+import { User } from './user/models/user.entity';
+import { UserContactEntity } from './user/models/user-contact.entity';
+import { CityEntity } from './common/models/city.entity';
+import { StateEntity } from './common/models/state.entity';
+import { CountryEntity } from './common/models/country.entity';
 
 // Info: Services
 import { UserService } from './user/services/user.service';
+
+import { UserRepository } from './user/models/user.repository';
+
 import { AuthService } from './auth/services/auth.service';
 
 import { mysqlConfig } from './db.config';
@@ -36,28 +39,21 @@ import { AppConfigService } from 'src/configs/app.config.service';
 @Module({
   exports: [UserService, AuthService],
   imports: [
-    MikroOrmModule.forRootAsync({
-      imports: [AppConfigModule],
-      inject: [AppConfigService],
-      useFactory: (appConfigService: AppConfigService) => {
-        console.log(appConfigService);
-        return mysqlConfig(appConfigService);
-      },
+    // https://mikro-orm.io/docs/usage-with-nestjs#repositories
+    MikroOrmModule.forFeature({
+      entities: [
+        ActionEntity,
+        PermissionEntity,
+        RoleEntity,
+        RolesPermsMapEntity,
+        UserRoleMapEntity,
+        User,
+        UserContactEntity,
+        CityEntity,
+        StateEntity,
+        CountryEntity,
+      ],
     }),
-    // MikroOrmModule.forFeature({
-    //   entities: [
-    //     ActionEntity,
-    //     PermissionEntity,
-    //     RoleEntity,
-    //     RolesPermsMapEntity,
-    //     UserRoleMapEntity,
-    //     UserEntity,
-    //     UserContactEntity,
-    //     CityEntity,
-    //     StateEntity,
-    //     CountryEntity,
-    //   ],
-    // }),
   ],
   providers: [UserService, AuthService],
 })

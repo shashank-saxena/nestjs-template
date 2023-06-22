@@ -16,20 +16,20 @@ import crypto from 'crypto';
 import { EntityManager, wrap } from '@mikro-orm/core';
 // import { SECRET } from '../config';
 // import { CreateUserDto, LoginUserDto, UpdateUserDto } from './dto';
-// import { User } from './user';
+import { User } from '../models/user.entity';
 // import { IUserRO } from './user.interface';
-// import { UserRepository } from './user.repository';
+import { UserRepository } from '../models/user.repository';
 
 @Injectable()
 export class UserService {
   constructor(
-    // private readonly userRepository: UserRepository,
+    private readonly userRepository: UserRepository,
     private readonly em: EntityManager,
   ) {}
 
-  // async findAll(): Promise<User[]> {
-  //   return this.userRepository.findAll();
-  // }
+  async findAll(): Promise<User[]> {
+    return this.userRepository.findAll();
+  }
 
   // async findOne(loginUserDto: LoginUserDto): Promise<User> {
   //   const findOneOptions = {
