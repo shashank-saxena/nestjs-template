@@ -22,7 +22,7 @@
     "orm:seed:test": "npx mikro-orm seeder:run --class=TestDbSeeder",
     "orm:schema:create": "echo 'generate db from entities' && npx mikro-orm schema:create -r",
     "prepare": "husky install",
-    "dev:commit": "git-cz"
+    "commit": "git-cz"
   },
   "dependencies": {
     "@mikro-orm/core": "^5.7.10",
@@ -93,8 +93,8 @@
     "useTsNode": true
   },
   "validate-branch-name": {
-    "pattern": "^(master|main|develop){1}$|^(feature|fix|hotfix|release)/.+$",
-    "errorMsg": "Invalid branch name"
+    "pattern": "^(master|main|develop){1}$|^(chores|feature|fix|hotfix|release)\/.+$",
+    "errorMsg": "Invalid branch name \n Ex. [master, main, develop, feature/feature-info, fix/112-fix-info, hotfix/112-hotfix-info, release/1.0.0, chores/chores-info]"
   },
   "lint-staged": {
     "*.ts, *.js, *.json": "prettier --write",
