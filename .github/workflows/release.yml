@@ -3,6 +3,12 @@ on:
   push:
     branches:
       - main
+      - alpha
+      - beta
+
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read # for checkout
@@ -32,5 +38,5 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npx semantic-release
