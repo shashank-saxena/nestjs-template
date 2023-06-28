@@ -22,7 +22,7 @@ import { UserRepository } from './user.repository';
   tableName: 'users',
   customRepository: () => UserRepository,
 })
-export class UserEntity extends BaseEntity {
+export class User extends BaseEntity {
   [EntityRepositoryType]?: UserRepository;
 
   @Unique({ name: 'username' })
