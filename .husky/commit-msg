@@ -2,6 +2,3 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npx --no -- commitlint --edit $1
-npx lint-staged --concurrent=false
-npx validate-branch-name
-# npx git-cz

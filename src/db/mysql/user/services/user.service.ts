@@ -31,6 +31,10 @@ export class UserService {
     return this.userRepository.findAll();
   }
 
+  async findOne(id: number): Promise<User[]> {
+    return this.userRepository.find(id);
+  }
+
   // async findOne(loginUserDto: LoginUserDto): Promise<User> {
   //   const findOneOptions = {
   //     email: loginUserDto.email,
