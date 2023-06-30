@@ -22,7 +22,7 @@
     "orm:seed:test": "npx mikro-orm seeder:run --class=TestDbSeeder",
     "orm:schema:create": "echo 'generate db from entities' && npx mikro-orm schema:create -r",
     "prepare": "husky install",
-    "pc": "npx lint-staged --concurrent=false && npx validate-branch-name && npx git-cz"
+    "pc": "git-cz"
   },
   "dependencies": {
     "@mikro-orm/core": "^5.7.10",
