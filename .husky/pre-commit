@@ -1,10 +1,6 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-echo "${CHECKS_RUN}"
-echo $CHECKS_RUN
-
-
 if [ -z "${CHECKS_RUN}" ]; then
   echo "Pre-commit checks will start as it is a manual commit"
   npx lint-staged --concurrent=false
