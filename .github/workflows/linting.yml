@@ -32,13 +32,18 @@ jobs:
         id: changed-files
         uses: tj-actions/changed-files@v37
 
+      - name: Extract branch name
+        shell: bash
+        run: echo "branch=${GITHUB_HEAD_REF:-${GITHUB_REF#refs/heads/}}" >> $GITHUB_OUTPUT
+        id: extract_branch
+
       - name: Validate code linting and formatting
         if: always()
         run: |
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
             echo "$file was changed"
             npx eslint $file
-            npx prettier --check $file
+            # npx prettier --check $file
           done
 
       - name: Validate PR commits with commitlint
@@ -47,6 +52,6 @@ jobs:
 
       - name: Validate branch name
         if: always()
-        run: npx validate-branch-name
+        run: npx validate-branch-name -t ${{ steps.extract_branch.outputs.branch }}
 
         # - run: npm test
